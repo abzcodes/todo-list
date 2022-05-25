@@ -1,22 +1,19 @@
+const addTodoButton = document.getElementById("addToDo");
+const toDoContainer = document.getElementById("toDoContainer");
 const inputField = document.getElementById("inputField");
-const btn = document.getElementById("btn");
-const todoContainer = document.getElementById("todo-container");
 
-btn.addEventListener("click", () => {
-  let element = document.createElement("li");
-  element.innerText = inputField.value;
-  if (inputField.value === "") {
-    return;
-  }
-  todoContainer.appendChild(element);
-  element.style.color = "purple";
-  todoContainer.classList.add("container-list");
+addTodoButton.addEventListener("click", () => {
+  let paragraph = document.createElement("p");
+  paragraph.classList.add("paragraph-styling");
+  paragraph.innerText = inputField.value;
+  toDoContainer.appendChild(paragraph);
+  inputField.value = "";
 
-  element.addEventListener("click", () => {
-    element.style.textDecoration = "line-through";
+  paragraph.addEventListener("click", () => {
+    paragraph.style.textDecoration = "line-through";
   });
 
-  element.addEventListener("dblclick", () => {
-    todoContainer.removeChild(element);
+  paragraph.addEventListener("dblclick", () => {
+    toDoContainer.removeChild(paragraph);
   });
 });
